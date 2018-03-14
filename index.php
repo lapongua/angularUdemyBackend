@@ -2,9 +2,18 @@
 require_once 'vendor/autoload.php';
 
 use \Slim\App;
+$app = new App();
 $db = new mysqli('localhost','root','root','angularUdemy');
 
-$app = new App();
+// Configuración de cabeceras
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if($method == "OPTIONS") {
+    die();
+}
 
 //LISTAR TODOS LOS PRODUCTOS 
 
